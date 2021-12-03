@@ -1,0 +1,33 @@
+#include <iostream>
+
+constexpr bool isPrime(unsigned int p)
+{
+	for (unsigned int d = 2; d <= p / 2; ++d)
+	{
+		if (p % d == 0)
+		{
+			return false; // Найден делитель без остатка
+		}
+	}
+	return (p > 1); // Такого делителя нет
+}
+
+constexpr int N_prime(int n)
+{
+	int count = 0;
+	unsigned int tmp = 1u;
+	while (count < n)
+	{
+		tmp++;
+		if (isPrime(tmp)) count++;
+	}
+	return tmp;
+}
+
+int main()
+{
+	constexpr int N = 10;
+	constexpr int num = N_prime(N);
+	std::cout << "10th prime: " << num << '\n';
+	return 0;
+}
