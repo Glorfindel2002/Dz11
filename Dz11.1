@@ -1,0 +1,19 @@
+#include <iostream>
+
+constexpr double e = 2.7182818284;
+
+constexpr double exp1(unsigned int x)
+{
+	if (x > 0)
+		return e * exp1(x - 1);
+	else
+		return 1;
+}
+
+int main()
+{
+	constexpr int tmp1 = 10;
+	constexpr double tmp2 = exp1(tmp1);
+	std::cout << "e^10 = " << tmp2 << '\n';
+	return 0;
+}
